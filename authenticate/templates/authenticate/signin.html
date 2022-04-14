@@ -1,0 +1,12 @@
+{% extends 'authenticate/base_layout.html' %}
+{% block content %}
+<form action="/signin" method="POST">
+    {% csrf_token %}
+    <label for="">Username</label>
+    <input type="text" id="username" name="username" placeholder="Enter Your User Name" Required>
+    <br>
+    <label for="">Password</label>
+    <input type="password" id="pass1" name="pass1" placeholder="Enter Your passsword" Required>
+    <br>
+    <button type="submit">LogIn</button>
+{% endblock content %}
