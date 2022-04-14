@@ -1,6 +1,26 @@
-{% load static %}
+{% extends 'authenticate/base_layout.html' %}
+{% block content %}
+<h1>This is hopme Page</h1>
 
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% for mesaage in messages %}
+<div class="alert alert-{{ messages.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message }}
+    <button type="submit" class="close" data-dissmiss="alert" aria-label="Close">
+    <span aria-hidded="true">&times;</span>
+</button>
+</div>
+{% endfor %}
 
-<h1>This is home page</h1>
-<hr>
+
+ {% if user.is_authenticated %}
+ <h3>Hello {{ fname }}</h3>
+ <h4>You Are successfully logged in</h4>
+ <button><a href="/logout">Logout</a></button>
+
+ {% else %}
+ 
+<button><a href="/signin">SignIn</a></button>
+
+<button><a href="/signup">Signup</a></button>
+{% endif %}
+{% endblock content %}
